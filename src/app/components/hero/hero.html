@@ -1,0 +1,37 @@
+﻿<section class="home-hero" aria-label="OPAS BIZZ Dubai trading hero section">
+  <div class="hero-banner" aria-hidden="true">
+    @for (banner of bannerImages; track banner) {
+      <img [src]="banner" [class.active]="$index === currentBanner" alt="" />
+    }
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content-wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Dubai General Trading Company</p>
+      <h1>OPAS BIZZ GENERAL TRADING L.L.C-FZ</h1>
+      <p>
+        Minimal, reliable trade support for grains, fresh produce, import-export,
+        global supply and IT services from Dubai, U.A.E.
+      </p>
+    </div>
+
+    <aside class="hero-enquiry-card" aria-label="Quick enquiry card">
+      <span class="card-kicker">Quick Enquiry</span>
+      <h2>Source, ship or build with OPAS BIZZ.</h2>
+      <p>Meydan and Business Bay offices serving UAE, GCC and global markets.</p>
+
+      <div class="hero-tags" aria-label="Key business areas">
+        @for (item of highlights; track item) {
+          <span>{{ item }}</span>
+        }
+      </div>
+
+      <div class="hero-actions">
+        <a routerLink="/contact" class="btn-primary">Send Inquiry</a>
+        <a routerLink="/products" class="btn-outline">View Products</a>
+      </div>
+    </aside>
+  </div>
+</section>

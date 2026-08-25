@@ -1,0 +1,180 @@
+﻿<main class="contact-page">
+  <section class="contact-hero" aria-label="Contact Opas Bizz banner" [style.background-image]="getContactHeroBg()"></section>
+
+  <section class="intro-section">
+    <div class="container intro-wrap">
+      <p class="eyebrow">{{ t('contact.eyebrow', 'Contact OPAS BIZZ GENERAL TRADING L.L.C-FZ') }}</p>
+      <h1>{{ t('contact.title', 'Get in Touch with Our Dubai Trade Team') }}</h1>
+      <p>
+        {{
+          t(
+            'contact.subtitle',
+            'Contact OPAS BIZZ GENERAL TRADING L.L.C-FZ for international export import, grains bulk supply, vegetables, fruits, commodities and business trading inquiries.'
+          )
+        }}
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container contact-layout">
+      <div class="contact-info-panel">
+        <div class="panel-heading">
+          <p class="eyebrow">Dubai Offices</p>
+          <h2>{{ t('contact.infoTitle', 'Company Contact Information') }}</h2>
+          <p>
+            OPAS BIZZ GENERAL TRADING L.L.C-FZ supports UAE market needs through reliable trading,
+            sourcing and business communication.
+          </p>
+        </div>
+
+        <div class="info-list">
+          <div class="info-item company-card">
+            <span class="info-icon" aria-hidden="true"><app-ui-icon name="briefcase"></app-ui-icon></span>
+            <div>
+              <strong>Company Name</strong>
+              <p>{{ company.name }}</p>
+            </div>
+          </div>
+
+          <div class="info-item wide">
+            <span class="info-icon" aria-hidden="true"><app-ui-icon name="building"></app-ui-icon></span>
+            <div>
+              <strong>Registered Office</strong>
+              <p>{{ company.registeredOffice }}</p>
+            </div>
+          </div>
+
+          <div class="info-item wide">
+            <span class="info-icon" aria-hidden="true"><app-ui-icon name="map-pin"></app-ui-icon></span>
+            <div>
+              <strong>Corporate Office</strong>
+              <p>{{ company.corporateOffice }}</p>
+            </div>
+          </div>
+
+          <a class="info-item" [href]="'mailto:' + company.email">
+            <span class="info-icon" aria-hidden="true"><app-ui-icon name="mail"></app-ui-icon></span>
+            <div>
+              <strong>Email</strong>
+              <p>{{ company.email }}</p>
+            </div>
+          </a>
+
+          <a class="info-item" [href]="'tel:' + company.phone1">
+            <span class="info-icon" aria-hidden="true"><app-ui-icon name="phone"></app-ui-icon></span>
+            <div>
+              <strong>Contact</strong>
+              <p>{{ company.phone1 }}</p>
+            </div>
+          </a>
+
+          <a class="info-item" [href]="'tel:' + company.phone">
+            <span class="info-icon" aria-hidden="true"><app-ui-icon name="phone"></app-ui-icon></span>
+            <div>
+              <strong>Sales & Trade</strong>
+              <p>{{ company.phone }}</p>
+            </div>
+          </a>
+
+          <a class="info-item" [href]="'tel:' + company.phone_No">
+            <span class="info-icon" aria-hidden="true"><app-ui-icon name="headset"></app-ui-icon></span>
+            <div>
+              <strong>Customer Support</strong>
+              <p>{{ company.phone_No }}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="submitForm()">
+        <div class="form-heading">
+          <span class="form-icon" aria-hidden="true"><app-ui-icon name="send"></app-ui-icon></span>
+          <div>
+            <h2>{{ t('contact.formTitle', 'Send Your Inquiry') }}</h2>
+            <p>Share your requirement and our team will respond.</p>
+          </div>
+        </div>
+
+        @if (successMessage) {
+          <div class="toast success">{{ successMessage }}</div>
+        }
+
+        @if (errorMessage) {
+          <div class="toast error">{{ errorMessage }}</div>
+        }
+
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" type="text" formControlName="fullName" placeholder="Enter your full name" />
+          @if (f.fullName.touched && f.fullName.errors) {
+            <small>{{ f.fullName.errors['required'] ? 'Full name is required.' : 'Full name must be at least 3 characters.' }}</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" formControlName="email" placeholder="Enter your email address" />
+          @if (f.email.touched && f.email.errors) {
+            <small>{{ f.email.errors['required'] ? 'Email is required.' : 'Please enter a valid email address.' }}</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="tel" formControlName="phone" placeholder="Enter your phone number" />
+          @if (f.phone.touched && f.phone.errors) {
+            <small>{{ f.phone.errors['required'] ? 'Phone number is required.' : 'Phone number must be valid.' }}</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" formControlName="subject">
+            @for (subject of subjects; track subject) {
+              <option [value]="subject">{{ subject }}</option>
+            }
+          </select>
+          @if (f.subject.touched && f.subject.errors) {
+            <small>Subject is required.</small>
+          }
+        </div>
+
+        <div class="form-group full">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" formControlName="message" placeholder="Write your requirement..."></textarea>
+          @if (f.message.touched && f.message.errors) {
+            <small>{{ f.message.errors['required'] ? 'Message is required.' : 'Message must be at least 10 characters.' }}</small>
+          }
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+          <app-ui-icon name="send"></app-ui-icon>
+          {{ isSubmitting ? 'Sending...' : 'Submit Inquiry' }}
+        </button>
+      </form>
+
+      <div class="map-card" aria-label="OPAS BIZZ GENERAL TRADING L.L.C-FZ Google Maps location">
+        <div class="map-copy">
+          <span class="map-icon" aria-hidden="true"><app-ui-icon name="map-pin"></app-ui-icon></span>
+          <div>
+            <p class="eyebrow">Google Map Location</p>
+            <h3>OPAS BIZZ GENERAL TRADING L.L.C-FZ</h3>
+            <p>{{ company.corporateOffice }}</p>
+          </div>
+          <a [href]="mapLink" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+
+        <iframe
+          title="OPAS BIZZ GENERAL TRADING L.L.C-FZ location in Business Bay Dubai"
+          src="https://www.google.com/maps?q=25.18613527378336,55.2599602960313(OPAS%20BIZZ%20GENERAL%20TRADING%20L.L.C-FZ)&t=k&z=17&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+

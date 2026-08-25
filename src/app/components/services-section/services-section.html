@@ -1,0 +1,36 @@
+﻿<section class="services-section" aria-label="OPAS BIZZ bento services section">
+  <div class="services-container">
+    <div class="section-header">
+      <p class="eyebrow">Products & Services</p>
+      <h2>Minimal bento view of our trading network.</h2>
+      <p class="subtitle">
+        Grains, fresh produce, import-export, global supply and IT services in one clear Dubai-based business platform.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      @for (service of services; track service.title) {
+        <article class="service-card" [class]="'service-card ' + service.size + ' ' + service.imageClass">
+          <div class="card-topline">
+            <span>{{ service.label }}</span>
+            <strong>{{ service.metric }}</strong>
+          </div>
+
+          <div class="card-copy">
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.description }}</p>
+          </div>
+
+          <a
+            class="learn-link"
+            [routerLink]="service.link"
+            [attr.aria-label]="'Learn more about ' + service.title"
+          >
+            Explore
+            <span aria-hidden="true">-></span>
+          </a>
+        </article>
+      }
+    </div>
+  </div>
+</section>

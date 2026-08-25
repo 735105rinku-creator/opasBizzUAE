@@ -1,0 +1,169 @@
+<main class="import-page">
+  <section
+    class="import-hero"
+    aria-label="Opas Bizz import services banner"
+    [style.background-image]="getImportHeroBg()"
+  ></section>
+
+  <section class="intro-section">
+    <div class="container intro-wrap">
+      <p class="eyebrow">{{ t('import.eyebrow', 'Import Services') }}</p>
+
+      <h1>
+        {{ t('import.title', 'Reliable Import Solutions for UAE Market') }}
+      </h1>
+
+      <p>
+        {{
+          t(
+            'import.subtitle',
+            'OPAS BIZZ GENERAL TRADING L.L.C-FZ provides professional import support for grains, vegetables, fruits, bulk commodities and international trade requirements into Dubai UAE.'
+          )
+        }}
+      </p>
+
+      <div class="contact-pills">
+        <a href="mailto:info@opasbizz.ae">✉ info@opasbizz.ae</a>
+        <a href="tel:+971502342494">📞 +971 502342494</a>
+        <a href="tel:+971502343066">📞 +971 502343066</a>
+        <!-- <span>📍 Dubai, UAE</span> -->
+      </div>
+    </div>
+  </section>
+
+  <section class="overview-section">
+    <div class="container overview-grid">
+      <div class="overview-content">
+        <p class="eyebrow">{{ t('import.overviewEyebrow', 'What We Import') }}</p>
+
+        <h2>
+          {{
+            t(
+              'import.overviewTitle',
+              'Trusted Import Partner for Commodities & Bulk Supply'
+            )
+          }}
+        </h2>
+
+        <p>
+          {{
+            t(
+              'import.overviewP1',
+              'We support UAE import requirements for grains, vegetables, fruits, food commodities and bulk trading products through reliable international sourcing channels.'
+            )
+          }}
+        </p>
+
+        <p>
+          {{
+            t(
+              'import.overviewP2',
+              'Our team helps businesses with product sourcing, documentation coordination, shipment planning and reliable delivery support for Dubai and UAE markets.'
+            )
+          }}
+        </p>
+
+        <a
+          class="primary-btn"
+          [routerLink]="['/contact']"
+          [queryParams]="{ service: 'import' }"
+        >
+          Request Import Quote
+        </a>
+      </div>
+
+      <div class="overview-card">
+        <img [src]="importCardImage" alt="Opas Bizz import trading company" loading="lazy" />
+
+        <div class="overview-card-content">
+          <h3>OPAS BIZZ GENERAL TRADING L.L.C-FZ</h3>
+          <p>
+            International import, export, grains, vegetables, fruits and bulk commodity trading.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('import.productsEyebrow', 'Import Categories') }}</p>
+        <h2>{{ t('import.productsTitle', 'Products We Import') }}</h2>
+      </div>
+
+      <div class="import-products-grid">
+        @for (item of importCategories; track item) {
+          <article class="import-product-card">
+            <span>✓</span>
+            <h3>{{ item }}</h3>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('import.processEyebrow', 'Import Process') }}</p>
+        <h2>{{ t('import.processTitle', 'Smooth, Documented & Reliable') }}</h2>
+      </div>
+
+      <div class="process-grid">
+        @for (step of processSteps; track step.title; let i = $index) {
+          <article class="process-card">
+            <span class="step-number">0{{ i + 1 }}</span>
+            <div class="icon-circle">{{ step.icon }}</div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('import.whyEyebrow', 'Why Choose Us') }}</p>
+        <h2>{{ t('import.whyTitle', 'Built for UAE Import Requirements') }}</h2>
+      </div>
+
+      <div class="feature-grid">
+        @for (item of advantages; track item.title) {
+          <article class="feature-card">
+            <div class="icon-circle">{{ item.icon }}</div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-box">
+      <p class="eyebrow">{{ t('import.ctaEyebrow', 'Start Import Inquiry') }}</p>
+
+      <h2>{{ t('import.ctaTitle', 'Need Bulk Import Supply into UAE?') }}</h2>
+
+      <p>
+        {{
+          t(
+            'import.ctaText',
+            'Share your product, quantity, origin, packaging and delivery requirement. Our team will help you with import trade coordination.'
+          )
+        }}
+      </p>
+
+      <a
+        class="primary-btn"
+        [routerLink]="['/contact']"
+        [queryParams]="{ service: 'import' }"
+      >
+        Contact Import Team
+      </a>
+    </div>
+  </section>
+</main>

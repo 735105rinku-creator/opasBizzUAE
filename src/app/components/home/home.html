@@ -1,0 +1,125 @@
+﻿<main class="home-page">
+  <app-hero></app-hero>
+
+  <section class="max-section company-snapshot" aria-label="OPAS BIZZ company snapshot">
+    <div class="container snapshot-grid">
+      <div class="section-copy">
+        <p class="eyebrow">Company Command View</p>
+        <h2>Dubai-based trading company built for real business movement.</h2>
+        <p>
+          OPAS BIZZ GENERAL TRADING L.L.C-FZ works across grains, fresh produce, import-export coordination and IT
+          services with one practical goal: make business enquiries clearer, faster and more reliable.
+        </p>
+        <div class="action-row">
+          <a routerLink="/about" class="btn-primary">Company Profile</a>
+          <a routerLink="/contact" class="btn-outline">Start Inquiry</a>
+        </div>
+      </div>
+
+      <div class="stats-board" aria-label="Company strengths">
+        @for (item of companyStats; track item.label) {
+          <article class="stat-tile">
+            <strong>{{ item.value }}</strong>
+            <span>{{ item.label }}</span>
+            <p>{{ item.note }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <app-services-section></app-services-section>
+
+  <section class="max-section network-section" aria-label="Trading network lanes">
+    <div class="container network-grid">
+      <div class="image-panel trade-port"></div>
+      <div class="section-copy network-copy">
+        <p class="eyebrow">Trading Network</p>
+        <h2>From UAE enquiries to international supply conversations.</h2>
+        <p>
+          We connect commodity requirements, fresh supply needs and shipment coordination into a simple business flow
+          for buyers, suppliers and partner teams.
+        </p>
+        <div class="lane-list">
+          @for (lane of networkLanes; track lane) {
+            <div class="lane-item"><span></span>{{ lane }}</div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-section workflow-section" aria-label="How OPAS BIZZ works">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="eyebrow">Work Method</p>
+        <h2>Structured process for trade, supply and digital service enquiries.</h2>
+      </div>
+
+      <div class="workflow-grid">
+        @for (step of workSteps; track step.number) {
+          <article class="workflow-card">
+            <span>{{ step.number }}</span>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="max-section quality-section" aria-label="Quality and documentation focus">
+    <div class="container quality-grid">
+      <div class="section-copy">
+        <p class="eyebrow">Quality & Documentation</p>
+        <h2>Clarity before movement, communication during movement.</h2>
+        <p>
+          Trade becomes stronger when the details are clean. Our workflow gives attention to product category,
+          quantity, packaging, destination, documentation and buyer communication from the start.
+        </p>
+      </div>
+
+      <div class="quality-stack">
+        @for (point of qualityPoints; track point) {
+          <div class="quality-item">
+            <span>✓</span>
+            <p>{{ point }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="max-section digital-section" aria-label="Digital business support">
+    <div class="container digital-grid">
+      <div class="image-panel digital-desk"></div>
+      <div class="section-copy">
+        <p class="eyebrow">Digital Business Support</p>
+        <h2>Trading company mindset with practical IT execution.</h2>
+        <p>
+          Alongside trading services, OPAS BIZZ supports companies with digital systems that organize enquiries,
+          operations, sales teams and online business workflows.
+        </p>
+        <div class="capability-cloud">
+          @for (capability of digitalCapabilities; track capability) {
+            <span>{{ capability }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-section closing-cta" aria-label="Start working with OPAS BIZZ">
+    <div class="container cta-shell">
+      <p class="eyebrow">Let's Work Together</p>
+      <h2>Need grains, fresh produce, import-export help or digital systems?</h2>
+      <p>
+        Share your requirement with our Dubai team and we will help you organize the right trading or technology path.
+      </p>
+      <div class="action-row center-actions">
+        <a routerLink="/contact" class="btn-primary">Request a Quote</a>
+        <a routerLink="/products" class="btn-outline">View Products</a>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,141 @@
+﻿<main class="grains-page">
+  <section
+    class="service-hero"
+    aria-label="OPAS BIZZ GENERAL TRADING L.L.C-FZ grains trading banner"
+    [style.background-image]="getGrainsHeroBg()"
+  ></section>
+
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('grains.productsEyebrow', 'Live Product Range') }}</p>
+        <h2>{{ t('grains.productsTitle', 'Grains & Commodities We Trade') }}</h2>
+      </div>
+
+      @if (loading) {
+        <div class="state-box">Loading grain products...</div>
+      }
+
+      @if (!loading && error) {
+        <div class="state-box error">{{ error }}</div>
+      }
+
+      @if (!loading && !error && products.length === 0) {
+        <div class="state-box">No grain products found.</div>
+      }
+
+      @if (!loading && !error && products.length > 0) {
+        <div class="product-grid">
+          @for (product of products; track product._id) {
+            <article
+              class="product-card"
+              tabindex="0"
+              role="button"
+              [attr.aria-label]="'Open product ' + product.productName"
+              (click)="openProduct(product)"
+              (keydown.enter)="openProduct(product)"
+            >
+              <img
+                [src]="getImageUrl(product.image)"
+                [alt]="product.productName"
+                loading="eager"
+              />
+
+              <div class="product-body">
+                <!-- <span class="origin">{{ getOriginFlag(product.location) }}</span> -->
+                <h3>{{ product.productName }}</h3>
+                <p>
+                  {{
+                    product.subcategory ||
+                      product.feature ||
+                      product.businessType ||
+                      'Premium quality grain product for export and import markets.'
+                  }}
+                </p>
+              </div>
+            </article>
+          }
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('grains.processEyebrow', 'Trading Process') }}</p>
+        <h2>{{ t('grains.processTitle', 'Simple, Transparent & Reliable') }}</h2>
+      </div>
+
+      <div class="process-grid">
+        @for (step of steps; track step.title; let i = $index) {
+          <article class="process-card">
+            <span class="step-number">0{{ i + 1 }}</span>
+            <div class="icon-circle"><app-ui-icon [name]="step.icon"></app-ui-icon></div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="standards-section">
+    <div class="container standards-box">
+      <div>
+        <p class="eyebrow">{{ t('grains.standardsEyebrow', 'Trade Standards') }}</p>
+
+        <h2>
+          {{
+            t(
+              'grains.standardsTitle',
+              'Quality, Packaging & Documentation Support'
+            )
+          }}
+        </h2>
+
+        <p>
+          {{
+            t(
+              'grains.standardsText',
+              'Our process focuses on reliable sourcing, product quality, packaging coordination, documentation support and dependable international trade communication.'
+            )
+          }}
+        </p>
+      </div>
+
+      <ul>
+        @for (item of standards; track item) {
+          <li>
+            <span><app-ui-icon name="check"></app-ui-icon></span>
+            {{ item }}
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-box">
+      <h2>{{ t('grains.ctaTitle', 'Need Bulk Grains or Commodities?') }}</h2>
+
+      <p>
+        {{
+          t(
+            'grains.ctaText',
+            'Share your product requirement, quantity, packaging and destination. Our team will help you with pricing, sourcing and trade coordination.'
+          )
+        }}
+      </p>
+
+      <a
+        class="cta-btn"
+        [routerLink]="['/contact']"
+        [queryParams]="{ service: 'grains' }"
+      >
+        {{ t('grains.ctaButton', 'Request a Quote') }}
+      </a>
+    </div>
+  </section>
+</main>
+

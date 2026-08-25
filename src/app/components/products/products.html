@@ -1,0 +1,161 @@
+<main class="products-page">
+  <section class="products-section" aria-label="Products listing">
+    <div class="container">
+      <div class="filter-tabs" role="tablist" aria-label="Product filters">
+        @for (filter of filters; track filter) {
+          <button
+            type="button"
+            role="tab"
+            class="filter-btn"
+            [class.active]="activeFilter === filter"
+            [attr.aria-selected]="activeFilter === filter"
+            (click)="setFilter(filter)"
+          >
+            {{ filter }}
+          </button>
+        }
+      </div>
+
+      @if (loading) {
+        <div class="state-box glass-state">Loading products...</div>
+      }
+
+      @if (!loading && error) {
+        <div class="state-box error">{{ error }}</div>
+      }
+
+      @if (!loading && !error && filteredProducts.length === 0) {
+        <div class="state-box">No products found.</div>
+      }
+
+      @if (!loading && !error && filteredProducts.length > 0) {
+        <div class="products-grid">
+          @for (product of filteredProducts; track product._id) {
+            <article
+              class="product-card"
+              tabindex="0"
+              role="button"
+              [attr.aria-label]="'Open product ' + product.productName"
+              (click)="openProduct(product)"
+              (keydown.enter)="openProduct(product)"
+            >
+              <div class="image-wrap">
+                <img
+                  [src]="getImageUrl(product.image)"
+                  [alt]="product.productName"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="category-badge">{{ product.category || 'Product' }}</span>
+                  <small>{{ getOriginFlag(product.location) }}</small>
+                </div>
+
+                <h3>{{ product.productName }}</h3>
+                <p>
+                  {{
+                    product.subcategory ||
+                      product.feature ||
+                      product.businessType ||
+                      'Premium quality product for export and import markets.'
+                  }}
+                </p>
+
+                <div class="card-action-row">
+                  @if (formatUsdPrice(product.price); as productPrice) {
+                    <div class="product-price">
+                      <span>USD Price</span>
+                      <strong>{{ productPrice }}</strong>
+                    </div>
+                  }
+
+                  <button type="button" class="enquiry-btn" (click)="openEnquiry($event, product)">
+                    Quick Enquiry
+                  </button>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      }
+    </div>
+  </section>
+
+  @if (enquiryProduct) {
+    <div class="modal-backdrop" role="presentation" (click)="closeEnquiry()">
+      <section
+        class="enquiry-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Product enquiry"
+        (click)="$event.stopPropagation()"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          aria-label="Close enquiry popup"
+          [disabled]="inquirySubmitting"
+          (click)="closeEnquiry()"
+        >
+          <app-ui-icon name="x"></app-ui-icon>
+        </button>
+
+        <span class="modal-kicker">Quick Enquiry</span>
+        <h2>{{ enquiryProduct.productName }}</h2>
+
+        <form class="enquiry-form" (submit)="submitInquiry($event)">
+          <label>
+            <span>Full Name</span>
+            <input type="text" name="name" [(ngModel)]="name" autocomplete="name" required />
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" [(ngModel)]="email" autocomplete="email" required />
+          </label>
+
+          <div class="phone-row">
+            <label>
+              <span>Code</span>
+              <input
+                type="text"
+                name="countryCode"
+                [(ngModel)]="countryCode"
+                autocomplete="tel-country-code"
+              />
+            </label>
+
+            <label>
+              <span>Mobile Number</span>
+              <input type="tel" name="mobile" [(ngModel)]="mobile" autocomplete="tel" required />
+            </label>
+          </div>
+
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="4" [(ngModel)]="message"></textarea>
+          </label>
+
+          @if (inquiryError) {
+            <div class="form-alert error">{{ inquiryError }}</div>
+          }
+
+          @if (inquirySuccess) {
+            <div class="form-alert success">{{ inquirySuccess }}</div>
+          }
+
+          <div class="modal-actions">
+            <button type="submit" class="btn-primary" [disabled]="inquirySubmitting">
+              {{ inquirySubmitting ? 'Submitting...' : 'Submit Enquiry' }}
+            </button>
+            <a class="btn-outline" href="https://wa.me/971502343066" target="_blank" rel="noopener"
+              >WhatsApp</a
+            >
+          </div>
+        </form>
+      </section>
+    </div>
+  }
+</main>

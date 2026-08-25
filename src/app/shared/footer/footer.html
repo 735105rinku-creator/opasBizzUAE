@@ -1,0 +1,147 @@
+﻿<footer class="site-footer" aria-label="Website footer">
+  <div class="container footer-shell">
+    <div class="footer-grid">
+
+      <!-- Company Information -->
+      <section class="footer-brand" aria-label="Company summary">
+        <p>
+          Dubai-based international trading company for grains, fresh produce,
+          commodities, import-export solutions and IT services.
+        </p>
+
+        <div class="contact-stack">
+          <a class="contact-row" href="mailto:info@opasbizz.ae">
+            <span>
+              <app-ui-icon name="mail"></app-ui-icon>
+            </span>
+            info&#64;opasbizz.ae
+          </a>
+
+          <div class="phone-grid" aria-label="Phone numbers">
+            <a href="tel:+97145766042">
+              <app-ui-icon name="phone"></app-ui-icon>
+              +971 45766042
+            </a>
+
+            <a href="tel:+971502342494">
+              <app-ui-icon name="phone"></app-ui-icon>
+              +971 502342494
+            </a>
+
+            <a href="tel:+971502343066">
+              <app-ui-icon name="phone"></app-ui-icon>
+              +971 502343066
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Office Addresses -->
+      <section class="office-panel" aria-label="Office addresses">
+        <h4>Dubai Offices</h4>
+
+        <div class="office-item">
+          <app-ui-icon name="building"></app-ui-icon>
+
+          <div>
+            <strong>Registered Office</strong>
+            <p>
+              Meydan Grandstand, 6th Floor, Meydan Road, Nad Al Sheba,
+              Dubai, U.A.E.
+            </p>
+          </div>
+        </div>
+
+        <div class="office-item">
+          <app-ui-icon name="map-pin"></app-ui-icon>
+
+          <div>
+            <strong>Corporate Office</strong>
+            <p>
+              Office No. 9, 9th Floor, Iris Bay Tower, Business Bay,
+              Dubai, U.A.E.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Links -->
+      <nav class="footer-col" aria-label="Quick links">
+        <h4>{{ t('footer.quickLinks') }}</h4>
+
+        <a routerLink="/">{{ t('nav.home') }}</a>
+        <a routerLink="/about">{{ t('nav.about') }}</a>
+        <a routerLink="/products">{{ t('nav.products') }}</a>
+        <a routerLink="/contact">{{ t('nav.contact') }}</a>
+      </nav>
+
+      <!-- Services + Social Media -->
+      <nav class="footer-col services-column" aria-label="Services">
+        <h4>{{ t('footer.services') }}</h4>
+
+        <a routerLink="/services/grains">{{ t('nav.grains') }}</a>
+        <a routerLink="/services/export">{{ t('nav.export') }}</a>
+        <a routerLink="/services/import">{{ t('nav.import') }}</a>
+        <a routerLink="/services/it-sector">{{ t('nav.itSector') }}</a>
+
+        <!-- Social Icons -->
+        <div class="footer-social-wrapper">
+          <h5>Follow Us</h5>
+
+          <div class="footer-social">
+            <a
+              href="https://x.com/opasgeneral"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow OPAS BIZZ on X"
+              title="X"
+            >
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/19AqCmTKtK/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow OPAS BIZZ on Facebook"
+              title="Facebook"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/opasgeneraltrading?igsh=MWZuazh3bmx3NDN1Yw=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow OPAS BIZZ on Instagram"
+              title="Instagram"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Legal Links -->
+      <nav class="footer-col" aria-label="Legal links">
+        <h4>{{ t('footer.legal') }}</h4>
+
+        <a routerLink="/privacy">{{ t('footer.privacy') }}</a>
+        <a routerLink="/terms">{{ t('footer.terms') }}</a>
+      </nav>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <span>
+        &copy; {{ year }} OPAS BIZZ GENERAL TRADING L.L.C-FZ.
+        {{ t('footer.rights') }}
+      </span>
+
+      <div>
+        <a routerLink="/privacy">{{ t('footer.privacy') }}</a>
+        <a routerLink="/terms">{{ t('footer.terms') }}</a>
+      </div>
+    </div>
+  </div>
+</footer>

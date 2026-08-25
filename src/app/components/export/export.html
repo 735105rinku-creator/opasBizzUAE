@@ -1,0 +1,169 @@
+<main class="export-page">
+  <section
+    class="export-hero"
+    aria-label="Opas Bizz export services banner"
+    [style.background-image]="getExportHeroBg()"
+  ></section>
+
+  <section class="intro-section">
+    <div class="container intro-wrap">
+      <p class="eyebrow">{{ t('export.eyebrow', 'Export Services') }}</p>
+
+      <h1>
+        {{ t('export.title', 'International Export Solutions from Dubai') }}
+      </h1>
+
+      <p>
+        {{
+          t(
+            'export.subtitle',
+            'OPAS BIZZ GENERAL TRADING L.L.C-FZ provides professional export support for grains, vegetables, fruits, bulk commodities and international trade requirements from Dubai UAE.'
+          )
+        }}
+      </p>
+
+      <div class="contact-pills">
+        <a href="mailto:info@opasbizz.ae">✉ info@opasbizz.ae</a>
+        <a href="tel:+971502342494">📞 +971 502342494</a>
+        <a href="tel:+971502343066">📞 +971 502343066</a>
+        <span>📍 Dubai, UAE</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="overview-section">
+    <div class="container overview-grid">
+      <div class="overview-content">
+        <p class="eyebrow">{{ t('export.overviewEyebrow', 'What We Export') }}</p>
+
+        <h2>
+          {{
+            t(
+              'export.overviewTitle',
+              'Trusted Export Partner for Bulk Trade & Commodities'
+            )
+          }}
+        </h2>
+
+        <p>
+          {{
+            t(
+              'export.overviewP1',
+              'We support international export requirements for grains, vegetables, fruits, food commodities and bulk trading products with reliable sourcing and professional coordination.'
+            )
+          }}
+        </p>
+
+        <p>
+          {{
+            t(
+              'export.overviewP2',
+              'Our company serves UAE and international clients with export documentation support, packaging coordination, shipment planning and long-term business communication.'
+            )
+          }}
+        </p>
+
+        <a
+          class="primary-btn"
+          [routerLink]="['/contact']"
+          [queryParams]="{ service: 'export' }"
+        >
+          Request Export Quote
+        </a>
+      </div>
+
+      <div class="overview-card">
+        <img [src]="exportCardImage" alt="Opas Bizz export import trading" loading="lazy" />
+
+        <div class="overview-card-content">
+          <h3>OPAS BIZZ GENERAL TRADING L.L.C-FZ</h3>
+          <p>
+            International export, import, grains, vegetables, fruits and bulk commodity trading.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('export.productsEyebrow', 'Export Categories') }}</p>
+        <h2>{{ t('export.productsTitle', 'Products We Export') }}</h2>
+      </div>
+
+      <div class="export-products-grid">
+        @for (item of exportProducts; track item) {
+          <article class="export-product-card">
+            <span>✓</span>
+            <h3>{{ item }}</h3>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('export.processEyebrow', 'Export Process') }}</p>
+        <h2>{{ t('export.processTitle', 'Simple, Professional & Transparent') }}</h2>
+      </div>
+
+      <div class="process-grid">
+        @for (step of processSteps; track step.title; let i = $index) {
+          <article class="process-card">
+            <span class="step-number">0{{ i + 1 }}</span>
+            <div class="icon-circle">{{ step.icon }}</div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('export.whyEyebrow', 'Why Choose Us') }}</p>
+        <h2>{{ t('export.whyTitle', 'Built for Reliable Export Business') }}</h2>
+      </div>
+
+      <div class="feature-grid">
+        @for (item of advantages; track item.title) {
+          <article class="feature-card">
+            <div class="icon-circle">{{ item.icon }}</div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-box">
+      <p class="eyebrow">{{ t('export.ctaEyebrow', 'Start Export Inquiry') }}</p>
+
+      <h2>{{ t('export.ctaTitle', 'Need Bulk Export Supply from Dubai?') }}</h2>
+
+      <p>
+        {{
+          t(
+            'export.ctaText',
+            'Share your product, quantity, packaging and destination details. Our team will help you with export trade coordination.'
+          )
+        }}
+      </p>
+
+      <a
+        class="primary-btn"
+        [routerLink]="['/contact']"
+        [queryParams]="{ service: 'export' }"
+      >
+        Contact Export Team
+      </a>
+    </div>
+  </section>
+</main>

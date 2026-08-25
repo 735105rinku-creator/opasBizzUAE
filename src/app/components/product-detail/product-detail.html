@@ -1,0 +1,111 @@
+<main class="product-detail-page">
+  @if (loading) {
+    <div class="container page-state">Loading product...</div>
+  }
+
+  @if (!loading && error) {
+    <div class="container page-state error">{{ error }}</div>
+  }
+
+  @if (!loading && product) {
+    <section class="detail-hero">
+      <div class="container detail-grid">
+        <div class="image-box">
+          <img [src]="getImageUrl(product.image)" [alt]="product.productName" />
+        </div>
+
+        <div class="content-box">
+          <span class="category-badge">{{ product.category || 'Product' }}</span>
+
+          <h1>{{ product.productName }}</h1>
+
+          <p class="subtitle">
+            {{
+              product.subcategory ||
+                product.feature ||
+                product.businessType ||
+                'Premium quality product supplied by OPAS BIZZ GENERAL TRADING L.L.C-FZ.'
+            }}
+          </p>
+
+          @if (formatUsdPrice(product.price); as usdPrice) {
+            <section class="price-stage" aria-label="Product price converter">
+              <div class="price-main">
+                <span>Base Price</span>
+                <strong>{{ usdPrice }}</strong>
+                <small>All product prices start in USD.</small>
+              </div>
+
+              <label class="currency-picker">
+                <span>Country / Currency</span>
+                <select
+                  name="currency"
+                  [(ngModel)]="selectedCurrencyCode"
+                  (ngModelChange)="onCurrencyChange()"
+                >
+                  @for (option of currencyOptions; track option.code) {
+                    <option [value]="option.code">{{ option.country }} - {{ option.code }}</option>
+                  }
+                </select>
+              </label>
+
+              <div class="converted-price">
+                <span>{{ selectedCurrency.country }}</span>
+                <strong>{{ convertPrice(product.price) }}</strong>
+                <small
+                  >{{ selectedCurrency.currency }}
+                  {{ ratesUpdatedAt ? '(' + ratesUpdatedAt + ')' : '' }}</small
+                >
+              </div>
+            </section>
+          }
+
+          <button type="button" class="enquire-btn" (click)="enquireNow()">
+            {{ t('products.enquire') || 'Enquire Now' }}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    @if (productSpecs.length > 0) {
+      <section class="spec-section">
+        <div class="container">
+          <h2>Product Details</h2>
+
+          <div class="spec-grid">
+            @for (spec of productSpecs; track spec.label) {
+              <div class="spec-item">
+                <span>{{ spec.label }}</span>
+                <strong>{{ spec.value }}</strong>
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <section class="other-section">
+      <div class="container">
+        <h2>Other Products</h2>
+
+        <div class="moving-window" aria-label="Smooth moving other products carousel">
+          <div class="moving-row" [style.--carousel-duration]="carouselDuration">
+            @for (item of carouselProducts; track item._id + '-' + $index) {
+              <article class="mini-card" (click)="openOtherProduct(item._id)">
+                <img [src]="getImageUrl(item.image)" [alt]="item.productName" />
+
+                <div>
+                  <span>{{ item.category || 'Product' }}</span>
+                  <h3>{{ item.productName }}</h3>
+                  @if (formatUsdPrice(item.price); as itemPrice) {
+                    <strong class="mini-price">{{ itemPrice }}</strong>
+                  }
+                </div>
+              </article>
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  }
+</main>

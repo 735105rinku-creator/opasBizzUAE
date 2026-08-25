@@ -1,0 +1,167 @@
+<main class="it-page">
+  <section
+    class="it-hero"
+    aria-label="Opas Bizz IT services banner"
+    [style.background-image]="getItHeroBg()"
+  ></section>
+
+  <section class="intro-section">
+    <div class="container intro-wrap">
+      <p class="eyebrow">{{ t('it.eyebrow', 'IT Sector Services') }}</p>
+
+      <h1>{{ t('it.title', 'Digital Solutions for Modern UAE Businesses') }}</h1>
+
+      <p>
+        {{
+          t(
+            'it.subtitle',
+            'OPAS BIZZ GENERAL TRADING L.L.C-FZ provides professional IT services including websites, ERP, CRM, HRMS, e-commerce platforms and business automation solutions.'
+          )
+        }}
+      </p>
+
+      <div class="contact-pills">
+        <a href="mailto:info@opasbizz.ae">✉ info@opasbizz.ae</a>
+        <a href="tel:+971502342494">📞 +971 502342494</a>
+        <a href="tel:+971502343066">📞 +971 502343066</a>
+        <!-- <span>📍 Dubai, UAE</span> -->
+      </div>
+    </div>
+  </section>
+
+  <section class="overview-section">
+    <div class="container overview-grid">
+      <div class="overview-content">
+        <p class="eyebrow">{{ t('it.overviewEyebrow', 'What We Build') }}</p>
+
+        <h2>
+          {{
+            t(
+              'it.overviewTitle',
+              'Websites, ERP, CRM & Digital Business Systems'
+            )
+          }}
+        </h2>
+
+        <p>
+          {{
+            t(
+              'it.overviewP1',
+              'Our IT sector work helps businesses create a strong digital presence and manage operations through professional software systems.'
+            )
+          }}
+        </p>
+
+        <p>
+          {{
+            t(
+              'it.overviewP2',
+              'We design and develop responsive websites, custom ERP software, CRM systems, HRMS platforms, e-commerce solutions and automation tools for UAE and international businesses.'
+            )
+          }}
+        </p>
+
+        <a
+          class="primary-btn"
+          [routerLink]="['/contact']"
+          [queryParams]="{ service: 'it-sector' }"
+        >
+          Request IT Consultation
+        </a>
+      </div>
+
+      <div class="overview-card">
+        <img [src]="itCardImage" alt="Opas Bizz IT services and digital solutions" loading="lazy" />
+
+        <div class="overview-card-content">
+          <h3>OPAS BIZZ GENERAL TRADING L.L.C-FZ</h3>
+          <p>
+            Professional website development, ERP, CRM, HRMS, e-commerce and business automation services.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('it.servicesEyebrow', 'IT Solutions') }}</p>
+        <h2>{{ t('it.servicesTitle', 'Our IT Service Range') }}</h2>
+      </div>
+
+      <div class="it-services-grid">
+        @for (item of services; track item) {
+          <article class="it-service-card">
+            <span>✓</span>
+            <h3>{{ item }}</h3>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('it.processEyebrow', 'Development Process') }}</p>
+        <h2>{{ t('it.processTitle', 'Planned, Professional & Scalable') }}</h2>
+      </div>
+
+      <div class="process-grid">
+        @for (step of processSteps; track step.title; let i = $index) {
+          <article class="process-card">
+            <span class="step-number">0{{ i + 1 }}</span>
+            <div class="icon-circle">{{ step.icon }}</div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">{{ t('it.whyEyebrow', 'Why Choose Us') }}</p>
+        <h2>{{ t('it.whyTitle', 'Technology Built Around Your Business') }}</h2>
+      </div>
+
+      <div class="feature-grid">
+        @for (item of advantages; track item.title) {
+          <article class="feature-card">
+            <div class="icon-circle">{{ item.icon }}</div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-box">
+      <p class="eyebrow">{{ t('it.ctaEyebrow', 'Start Your Digital Project') }}</p>
+
+      <h2>{{ t('it.ctaTitle', 'Need a Website, ERP or Custom Software?') }}</h2>
+
+      <p>
+        {{
+          t(
+            'it.ctaText',
+            'Share your business requirement and our IT team will help you plan the right digital solution.'
+          )
+        }}
+      </p>
+
+      <a
+        class="primary-btn"
+        [routerLink]="['/contact']"
+        [queryParams]="{ service: 'it-sector' }"
+      >
+        Contact IT Team
+      </a>
+    </div>
+  </section>
+</main>

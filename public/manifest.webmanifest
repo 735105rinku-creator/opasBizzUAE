@@ -1,0 +1,34 @@
+{
+  "name": "OPAS BIZZ GENERAL TRADING L.L.C-FZ",
+  "short_name": "Opas Bizz",
+  "description": "Dubai-based international trading company specializing in grains, fruits, vegetables, import-export services, bulk trading, and IT solutions.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0f2c",
+  "theme_color": "#c9a84c",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["business", "trade", "import-export", "technology"],
+  "icons": [
+    {
+      "src": "/assets/icon/opasbizz_icon.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon/opasbizz_icon.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon/opasbizz_icon.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "maskable"
+    }
+  ]
+}
